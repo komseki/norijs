@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="Ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/cache-manifest; charset=UTF-8" >
+    <meta name="format-detection" content="telephone=no">
+    <title>Castle Maker</title>
+    <link type="text/css" rel="stylesheet" media="all" href="css/common.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="css/layout.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="css/swiper.min.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="css/main.css" />
+    <link type="text/css" rel="stylesheet" media="screen and (min-width:860px) and (max-width:1156px), screen and (min-height:600px) and (max-height:659px)" href="css/main_m.css" />
+    <link type="text/css" rel="stylesheet" media="screen and (max-width:859px), screen and (max-height:599px)" href="css/main_s.css" />
+    <!--
+    <link type="text/css" rel="stylesheet" media="screen and (min-width:1280px) and (min-height:660px)" href="css/intro.css" />
+    -->
+    
+    
+    
+</head>
+<!--
+<body onselectstart="return false;" ondragstart="return false;" >
+-->
+<body onselectstart="return false;" ondragstart="return false;" >
+       <div class="page-root">
+            <div class="page-container">
+                <section id="gameContainer" class="page game-contents" style="display: none;">
+                    <article class="wrap">
+                        <!-- 실제 canvas 태그는 javascript threejs library 에서 생성함. -->
+                        <div id="playContainer" class="canvas-wrap">
+                            <!-- canvas 삽입될 영역 -->
+                        </div>
+                    </article>
+                </section>
+                <section class="page tutorial" style="display: none;">
+                </section>
+                <section id="introContainer" class="page intro" style="display: none;">
+                </section>
+            </div>
+            
+           <!-- 화면 막기 -->
+           <div id="screenBlock" class="fullscreen m-screen-block black"></div>
+           <!-- 팝업 -->
+           <div id="popupContainer" class="fullscreen popup-container"></div>
+           
+           <!-- 화면 막기 -->
+           <div id="screenAllBlock" class="fullscreen m-screen-block black top-screen"></div>
+       </div>
+       
+       
+       <script type="text/javascript" data-main="js/index.config" src="js/require/require.js" ></script>
+</body>
+</html>
+ 

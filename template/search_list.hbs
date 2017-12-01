@@ -1,0 +1,638 @@
+<!-- 타이틀 -->
+<script id="tmplTitle" type="text/template">
+   <div class="main-wrap title-scene">
+        <article class="main-contents">
+            <div class="world-wrap">
+               <div class="game-tit"><img src="images/common/title_game_tit.png" /></div>
+               <div class="loading-bar-wrap">
+                   <div class="loading-bg"><img src="images/common/title_loading_bg.png" alt="로딩바 배경이미지" /></div>
+                   <div id="loadingbar" class="loading-bar"></div>
+               </div>
+           </div>
+        </article>
+        <footer class="main-foot">
+            <div><img src="images/common/title_copylight.png" /></div>
+        </footer>
+    </div>
+</script>
+
+
+<!-- 메인 -->
+<script id="tmplMain" type="text/template">
+    <article id="mainPlay" class="wrap" style="display:none;">
+        <!-- 실제 canvas 태그는 javascript threejs library 에서 생성함. -->
+        <div id="playContainer" class="canvas-wrap">
+            <!-- canvas 삽입될 영역 -->
+        </div>
+        <nav class="play-ui-box foot-btn-box-left">
+            <button id="timeBtn" class="time-btn-night foot-btn img-button lst">Time</button>
+        </nav>
+        
+        {{#if ismirror}}
+        <nav class="play-ui-box eff-group foot-btn-box-right"> <!-- foot-btn-box-center // foot-btn-box-right  -->
+        {{else}}
+        <nav class="play-ui-box top-btn-box-right">
+            <button id="mirror" class="ws-btn img-button">공유하기</button>
+        </nav>
+        <nav class="play-ui-box foot-btn-box-right">
+            <button class="home-btn img-button">HOME</button>
+        </nav>
+        <nav class="play-ui-box eff-group foot-btn-box-center">
+        {{/if}}
+            <button id="leaf" data-type="leaf" class="effect-toggle off leaf-btn img-button scale">나뭇잎</button><!--
+            --><button id="flower" data-type="flower" class="effect-toggle off flower-btn img-button scale">꽃잎</button><!--
+            --><button id="snow" data-type="snow" class="effect-toggle off snow-btn img-button scale">눈</button><!--
+            --><button id="rain" data-type="rain" class="effect-toggle off rain-btn img-button scale">비</button><!--
+            <button id="quake" data-type="quake" class="quake-btn img-button scale">지진</button>--><!--
+            --><button id="fireworks" data-type="fireworks" class="fireworks-btn img-button scale">불꽃</button>
+        </nav>
+        
+    </article>
+    <section id="mainHome" class="home-wrap">
+        <article class="main-contents">
+           <div id="card_03" class="card"><a href="javascript:void(0);"><img src="images/main/card_03.png" alt="준비중입니다" /></a></div>
+           <div id="card_02" class="card"><a href="javascript:void(0);"><img src="images/main/card_02.png" alt="준비중입니다" /></a></div>
+           <div id="card_01" class="card"><a href="javascript:void(0);"><img src="images/main/card_01.png" alt="동화나라" /></a></div>
+        </article>
+        <nav class="main-lnb">
+            <div class="main-lnb-container">
+                <div class="main-lnb-box">
+                   <button class="gallery-btn img-button" style="display:none;">갤러리</button>
+                   <div class="center-box">
+                       <img src="images/main/txt_home_tit.png" alt="나라를 선택해서 나만의 성을 꾸미세요" />
+                   </div>
+                   <button id="homeShotdown" class="close-btn img-button">앱종료</button>
+               </div>
+            </div>
+        </nav>
+        <article class="main-foot">
+            <div class="main-foot-container">
+               <div class="thumb-theme">
+                   <div class="thumb-theme-bg">
+                       <div class="thumb-theme-bg-left"></div>
+                       <div class="thumb-theme-bg-center"></div>
+                       <div class="thumb-theme-bg-right"></div>
+                   </div>
+                   <div class="thumb-theme-contents">
+                       <div class="thumb-theme-list-wrap swiper-container">
+                           <ul id="thumbThemeList" class="swiper-wrapper" style="display:none;">
+                               <li class="thumb-theme-img swiper-slide"><a href="javascript:void(0);"><img src="images/main/theme_01.png" alt="헨젤과 그레텔 테마 썸네일" /></a></li>
+                               <li class="thumb-theme-img swiper-slide"><a href="javascript:void(0);"><img src="images/main/theme_none.png" alt="테마 준비중입니다" /></a></li>
+                               <li class="thumb-theme-img swiper-slide"><a href="javascript:void(0);"><img src="images/main/theme_none.png" alt="테마 준비중입니다" /></a></li>
+                               <li class="thumb-theme-img swiper-slide"><a href="javascript:void(0);"><img src="images/main/theme_none.png" alt="테마 준비중입니다" /></a></li>
+                           </ul>
+                       </div>
+                       <div class="thumb-control">
+                           <button class="thumb-ui-btn thumb-prev-btn"></button>
+                           <button class="thumb-ui-btn thumb-next-btn"></button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </article>
+    </section>
+</script>
+
+<script id="tmplMainThumbList" type="text/template">
+    <li class="thumb-theme-img swiper-slide"><a href="javascript:void(0);"><img src="{{img}}" alt="{{alt}}" /></a></li>
+</script>
+
+
+
+
+<!-- 사진삭제 -->
+<script id="tmplPopupDeletePicture" type="text/template">
+   <div class="popup-layer-main fullscreen popup-delete">
+        <div class="popup-contents">
+            <button class="popup-btn popup-confirm-btn img-button">확인</button>
+        </div>
+    </div>
+</script>
+   
+<!-- 종료 -->
+<script id="tmplPopupHomeShotdown" type="text/template">
+   <div class="popup-layer-main popup-shotdown">
+       <button class="popup-btn popup-confirm-btn img-button">확인</button>
+       <button class="popup-btn popup-cancel-btn img-button">취소</button>
+   </div>
+</script>
+   
+<!-- 저장 -->
+<script id="tmplPopupSavePhoto" type="text/template">
+   <div class="popup-layer-main popup-save">
+       <div class="popup-contents">
+           <button class="popup-btn popup-confirm-btn img-button">확인</button>
+       </div>
+   </div>
+</script>
+   
+<!-- 가져오기 -->
+<script id="tmplPopupContinue" type="text/template">
+   <div class="popup-layer-main popup-read-confirm">
+       <div class="popup-contents">
+           <button class="popup-btn popup-continue-btn img-button">가져오기</button>
+           <button class="popup-btn popup-new-btn img-button">새로만들기</button>
+           <button class="popup-btn popup-close-btn-small img-button">팝업닫기</button>
+       </div>
+   </div>
+</script>
+   
+<!-- 가이드 -->
+<script id="tmplGuide" type="text/template">
+   <div class="popup-layer-main popup-guide">
+       <div class="popup-contents">
+           <button class="popup-btn popup-close-btn img-button">확인</button>
+           <button class="popup-guide-btn popup-btn popup-confirm-btn img-button">확인</button>
+       </div>
+   </div>
+</script>
+
+<!-- 소켓연결실패 -->
+<script id="tmplPopupWsFail" type="text/template">
+   <div class="popup-layer-main popup-ws-fail">
+       <button class="popup-btn popup-confirm-btn img-button">확인</button>
+       <button class="popup-btn popup-cancel-btn img-button">취소</button>
+   </div>
+</script>
+   
+<!-- 소켓종료 -->
+<script id="tmplPopupWsEnd" type="text/template">
+   <div class="popup-layer-main popup-ws-end">
+       <div class="popup-contents">
+           <button class="popup-btn popup-confirm-btn img-button">확인</button>
+       </div>
+   </div>
+</script>
+
+<!-- 소켓연결 / 공유 -->
+<script id="tmplPopupWsConn" type="text/template">
+   <div class="popup-layer-main popup-ws-bg">
+       {{#if connecting}}
+       <div id="ws_ing" class="popup-contents" >
+            <div class="popup-txt-conn">
+                <img src="images/common/txt_pop_ws_ing.png" alt="접속중입니다. 잠시만기다려주세요."/>
+            </div>
+       </div>
+       {{else}}
+       <div id="ws_share" class="popup-contents" >
+            <div class="popup-txt-share">
+            <img src="images/common/txt_pop_ws_share.png" alt="게임화면을 공유 하시겠습니까?"/>
+            </div>
+            <button class="popup-btn popup-confirm-btn img-button">확인</button>
+            <button class="popup-btn popup-cancel-btn img-button">취소</button>
+        </div>
+        {{/if}}
+   </div>
+</script>
+
+<!-- 자동촬영 class="swiper-lazy"-->
+<script id="tmplAutoShot" type="text/template">
+    <div class="main-wrap">
+       <div class="main-lnb camera-auto">
+           <!-- 높이조절 137, 0 
+           <div class="main-lnb-wrap"> 
+           </div>
+           -->
+           <div class="main-lnb-container"><!-- 위치조절 0, -137 -->
+               <div class="top-bg-box">
+                   <div class="top-bg-left"></div>
+                   <div class="top-bg-center"></div>
+                   <div class="top-bg-right"></div>
+               </div>
+               <div class="main-lnb-box">
+                   <button class="back-btn img-button">뒤로가기</button>
+                   <div class="center-box">
+                       <img src="images/main/txt_auto_camera.png" alt="자동 촬영 이미지" />
+                   </div>
+                   <button class="down-btn img-button">사진저장</button>
+                   <button class="share-btn img-button">공유하기</button>
+               </div>
+           </div>
+       </div>
+       <div class="main-contents">
+           <div class="world-wrap camera-auto">
+               <div class="swiper-container">
+                   <ul id="autoList" class="swiper-wrapper" >
+                       {{#each captureImages}}
+                       <li class="swiper-slide">
+                           <div class="slide-box">
+                               <img src="{{this}}" alt="캡쳐이미지" />
+                               <button class="check-box swiper-no-swiping" data-form-id="{{@index}}"></button>
+                           </div>
+                       </li>
+                       {{/each}}
+                   </ul>
+               </div>
+           </div>
+       </div>
+       <div class="main-foot">
+           <!--
+           <div class="main-foot-wrap">
+           </div>
+           -->
+           <div class="main-foot-container">
+           </div>
+       </div>
+   </div>
+</script>
+
+<!-- 자동촬영 아이템 -->
+<script id="tmplSelfShot" type="text/template">
+</script>
+
+
+
+<!-- 인트로 전체 -->
+<script id="tmplIntroFrame" type="text/template">
+    <div class="intro-bg"></div>
+    <div class="intro-wrap intro-bg">
+        <nav class="intro-lnb">
+            <button id="help" class="help-btn img-button scale">도움말</button>
+            <button id="appFinish" class="close-btn img-button scale">앱종료</button>
+        </nav>
+        <section id="introContents" class="intro-contents centered">
+        </section>
+        <footer class="version">Ver.<span id="version"><span></footer>
+    </div>
+</script>
+
+<!-- 블루투스 리스트 -->
+<script id="tmplSearchList" type="text/template">
+   <article class="intro-box search-list">
+        <div class="box-wrap">
+           <div class="box-frame">
+                <div class="box-tit gradient-tit">
+                    <span><img src="images/intro/txt_search_list_tit.png" alt="아래 목록에서 MOBLO를 선택하여 연결해주세요" /></span>
+                </div>
+                <div class="box-cont-wrap">
+                    <div class="box-cont">
+                        <ul id="searchList" class="blooth-list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-wrap"><img src="images/intro/txt_search_info.png" alt="기기 목록에 MOBLO가 없으면 재검색을 해주세요. 검색이 안되면 모블로 전원이 켜져 있는지 확인(혹은 재부팅)하고, 모블로와 가까운 위치로 이동시켜 주시기 바랍니다" /></div>
+        <div class="button-wrap">
+            <button id="reSearch" class="intro-large-btn retry-search-btn img-button">모블로 재검색</button>
+            <button id="cancelSearch" style="display:none;" class="cancel-search-btn intro-large-btn img-button">검색 취소</button>
+        </div>
+    </article>
+</script>
+
+<!-- 블루투스 리스트의 리스트 아이템 -->
+<script id="tmplDeviceItem" type="text/template">
+    <li><a data-address="{{address}}" href="javascript:void(0);">{{name}}</a></li>
+</script>
+
+<!-- 블루투스 접속중 -->
+<script id="tmplConnecting" type="text/template">
+    <article class="intro-box search-connecting">
+        <div class="box-wrap">
+           <div class="box-frame">
+                <div class="box-tit gradient-tit">
+                    <span><img src="images/intro/txt_conn_tit.png" alt="블루투스와 연결중 입니다." /></span>
+                </div>
+                <div class="box-cont-wrap result-box">
+                    <div class="conn-state-ing-icon"></div>
+                    <div class="conn-state-ing-info"><img src="images/intro/txt_conn_info.png" alr="변경하기를 누르면 연결 된 보드명을 변경할 수 있습니다."/></div>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button id="ingCancel" class="cancel-conn-btn intro-large-btn img-button">취소</button>
+        </div>
+    </article>
+
+</script>
+
+<!-- 접속성공 -->
+<script id="tmplSuccess" type="text/template">
+    <article class="intro-box search-success">
+        <div class="box-wrap">
+           <div class="box-frame">
+                <div class="box-tit gradient-tit">
+                    <span><img src="images/intro/txt_conn_ok_tit.png" alt="모블로와 블루투스 연결이 성공하였습니다." /></span>
+                </div>
+                <div class="box-cont-wrap result-box">
+                    <div class="conn-state-ok-icon"><img src="images/intro/conn_ok.png" alt="모블로 연결 성공 아아콘" /></div>
+                    <div class="conn-state-ok-name">연결된 보드명 : <span id="successName">{{name}}</span></div>
+                    <div class="conn-state-ok-info"><img src="images/intro/txt_conn_ok_info.png" alr="변경하기를 누르면 연결 된 보드명을 변경할 수 있습니다."/></div>
+                    <button id="changeName" class="conn-rename-btn img-button">변경하기</button>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button id="successOk" class="conn-ok-btn intro-large-btn img-button">확인</button>
+        </div>
+    </article>
+</script>
+
+<!-- 접속실패 -->
+<script id="tmplFail" type="text/template">
+    <article class="intro-box fail">
+        <div class="box-wrap">
+           <div class="box-frame">
+                <div class="box-tit gradient-tit">
+                    <span><img src="images/intro/txt_conn_fail_tit.png" alt="블루투스 연결에 실패 하였습니다." /></span>
+                </div>
+                <div class="box-cont-wrap result-box">
+                    <div class="conn-state-ok-icon intro-fail"><img src="images/intro/conn_fail.png" alt="모블로 연결 실패 아아콘" /></div>
+                    <div class="conn-state-ok-info intro-fail"><img src="images/intro/txt_fail_info.png" alr="모블로와 연결을 시도합니다. 전원이 켜졌는지 확인하세요."/></div>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrap">
+            <button id="retryFail" class="conn-fail-ok-btn intro-small-btn img-button">재시도</button>
+            <button id="cancelFail" class="conn-fail-cancel-btn intro-small-btn img-button">취소</button>
+        </div>
+    </article>
+</script>
+
+<!-- 이름변경 -->
+<script id="tmplRename" type="text/template">
+    <div class="popup-layer fullscreen intro-popup-rename">
+        <div class="popup-contents">
+            <section class="popup-wrap">
+                <div class="box-wrap">
+                   <div class="box-frame">
+                        <div class="box-tit">
+                            <span>보드명 입력</span>
+                        </div>
+                        <div class="box-cont-wrap">
+                            <div class="rename-input">
+                                <!--
+                                <span class="write"><input type="text" value="32165498" /></span>
+                                -->
+                                <span><input type="text" value="{{name}}" /></span>
+                                
+                            </div>
+                            <div class="rename-info"><img src="images/intro/txt_popup_rename.png" alt="원하는 보드명을 입력 후 확인 버튼을 누르세요.(한글,영문,숫자 조합 10자 이내로 입력해 주시길 바랍니다.)" /></div>
+                            <button class="rename-ok-btn img-button">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</script>
+
+<!-- 인트로 종료 -->
+<script id="tmplIntroShotdown" type="text/template">
+    <div class="popup-layer fullscreen intro-popup-shotdown">
+        <div class="popup-contents">
+            <section class="popup-wrap">
+                <div class="box-wrap">
+                   <div class="box-frame">
+                        <div class="box-tit">
+                            <span></span>
+                        </div>
+                        <div class="box-cont-wrap">
+                            <div class="intro-popup-msg-box">종료하시겠습니까?</div>
+                            <div class="shotdown_btn_wrap">
+                                <button class="intro-small-btn intro-shotdown-cancel-btn img-button">취소</button>
+                                <button class="intro-small-btn intro-shotdown-ok-btn img-button">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</script>
+
+<!-- 도움말 -->
+<script id="tmplHelp" type="text/template">
+    <div class="popup-layer fullscreen intro-popup-help">
+        <div class="popup-bg fullscreen m-screen-block black"></div>
+        <div class="popup-contents">
+            <section class="popup-wrap">
+                <div class="box-wrap">
+                   <div class="box-frame">
+                        <div class="box-tit">
+                            <span>모블로 도움말</span>
+                            <button class="help-close-btn scale"><img src="images/intro/bt_close.png" alt="도움말 닫기" /></button>
+                        </div>
+                        <div class="box-cont-wrap">
+                            <div class="box-cont">
+                                <ul class="faqlist">
+                                    <li>
+                                        <!-- <a href="http://www.moblo.co.kr/mb/%EA%B3%A0%EA%B0%9D%EC%A7%80%EC%9B%90_FAQ#1" class="faq_q"> -->
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">전원 연결이 안돼요<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>모블로 어뎁터를 확인하신 후 전원버튼을 누르세요. 상태가 지속되면 고객센터 070-4044-0108로 연락바랍니다.&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">블루스트 접속이 안돼요<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>제품이 켜져있는지 확인 바랍니다. 블루투스는 무선 연결로 전파환경에 따라 제품 연결시 연결이 안되거나, 제품사용 시 연결이 끊길 수 있습니다.</p>
+                                                <p>보드의 전원과 태블릿의 전원을 모두 끄고 다시 켜셔서 연결하여 주십시요. 이렇게 하여도 연결이 지속적으로 끊길 시에는 고객센터 070-4044-0108로 연락주세요&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">블록/스킨태그가 인식이 안돼요.<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>NFC 태그를 NFC리더 블록위에 올려 놓거나 제거할 때 보드판에서 '띠딩'하는 인식음을 듣고 나서 올려 놓거나 제거 하십시요. </p>
+                                                <p>태그를 제거하고 보드판에서 인식음이 나오기전에 새로운 태그를 올려놓으면 인식이 안됩니다. 이런 상황에서도 인식이 안될경우 고객센터 070-4044-0108로 연락주세요.&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">앱은 어디서 다운받나요?<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>구글 스토어에서 정식으로 다운받을 수 있습니다. 모블로를 검색하시면 다양한 어플리케이션을 확인 할 수 있습니다.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">앱 업그레이드는 어떻게 하나요?<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>Wifi환경에서 자동 업그레이드 됩니다. 또한, 구글스토어 계정에서 업데이트 목록을 확인하시면 쉽게 업그레이드가 가능합니다.&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">태블릿에 소리가 안나요.<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>연결 된 태블릿의 볼륨을 확인하세요. 상태가 지속되면 고객센터 070-4044-0108로 연락바랍니다.&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">블록 인식이 잘 안됩니다.<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>일시적인 접촉 문제일 수 있으니 블록을 뺏다가 다시 꽂아 주세요.&nbsp;</p>
+                                                <p>보드판, 블록의 접점부를 부드러운 수건 등으로 깨끗이 닦아 주세요.&nbsp;</p>
+                                                <p>한 좌표에 9개 블록만 인식이 되니 그 이상은 쌓지 마세요.&nbsp;</p>
+                                                <p>블록 접점핀의 스프링이 제대로 동작하는지 확인해주세요.&nbsp;</p>
+                                                <p>상태가 지속되면 고객센터 070-4044-0108로 연락바랍니다.&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">모블로에서 열이 납니다.<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>많은 블록을 동시에 사용하면 전류 소모가 커져서 열이 발생 할 수 있습니다.&nbsp;</p>
+                                                <p>제품을 장시간 오래 사용해도 열이 발생할 수 있습니다.&nbsp;</p>
+                                                <p>상대적으로 더운 환경에서 사용하면 제품의 온도가 상승할 수 있으니 온도가 높은 곳, 차량 안, 직사광선을 피해주세요.&nbsp;</p>
+                                                <p>인체 체온 정도는 제품 이상이 있는 것이 아니오니 안심하고 사용하시기 바랍니다.&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">앱은 무료인가요?<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>제공되는 콘텐츠를 무료입니다. 구글 스토어에서 "모블로"를 검색하시면 다양한 콘텐츠가 확인 됩니다.&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">태블릿이 안켜져지고나 터치가 안되요.<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>방전이 되었는지 확인 하시고 충전을 하세요. 상태가 지속된다면 "늑대와 여우 컴퓨터" AS센터 1566-3663로 문의 바랍니다. &nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">미라캐스트가 연결이 안되요.<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>미라캐스트에 동봉되어있는 케이블을 연결하여주시고 TV뒤부분 HDMI와 USB연결부에 꽂아줍니다.</p>
+                                                <p> TV전원을 켜고 NY태블릿 설정에서 디스플레이-화면전송을 메뉴를 선택하면 TV에서도 태블릿 화면을 동일하게 보실 수 있습니다.</p>
+                                                <p>상세한 연결방법은 모블로 홈페이지 가이드북을 참고바랍니다. &nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">구글 스토어(인터넷)가 검색이 안되요.<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>Wifi가 접속 되어있는지 확인 바랍니다.&nbsp;</p>                        
+                                                
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">몇 명이 사용 가능한가요?<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>제공되는 콘텐츠에 따라 다릅니다. 1인~4인 사용 가능하게 설정되어 있습니다. 다만 한꺼번에 많은 블록을 체결하게되면 예상치못한 오류상황이 발생 할 수 있으니 적정 인원이 사용 할 수 있게 지도가 필요합니다. &nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">깨지거나 부서지거나 유해하지 않나요?<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>모블로 블록제품은 레고와 동일한 ABS재질입니다. ROHS인증을 통과한 안전한 제품입니다. 일반적인 사용법으로는 깨지거나 부서지지 않습니다. </p>
+                                                <p>다만 벽을 향해 세개 던지거나 발로 밟는 등 일부러 강한 충격을 주는 행동은 고장 및 파손을 일으킬 수 있으니 삼가주시기 바랍니다. &nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                   <li>
+                                        <a href="javascript:void(0);" class="faq_q">
+                                            <div class="inbox">
+                                                <div class="faq_tit">보관은 어떻게 하나요?<!-- span class="new">새글</span  --></div>
+                                            </div>
+                                        </a>
+                                        <div class="faq_a"> 
+                                            <div class="faq_answer">
+                                                <p>모블로 전용가방에 최초 배송상태를 참고하시어 수납하셔서 보관하시면 됩니다. 가방을 세워서 혹은 눕힌상태로 보관하시되 모블로 위에 무거운 물건을 올리지 않도록 해주세요&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</script>
+
+
+

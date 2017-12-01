@@ -1,0 +1,1155 @@
+/*
+  - 1:1 1280*800
+  
+  <link type="text/css" rel="stylesheet" media="all" href="css/intro.css" />
+  <link type="text/css" rel="stylesheet" media="screen and (min-width:860px) and (max-width:1156px), screen and (min-height:600px) and (max-height:659px)" href="css/intro_m.css" />
+  <link type="text/css" rel="stylesheet" media="screen and (max-width:659px), screen and (max-height:599px)" href="css/intro_s.css" /> 
+  
+ * */
+
+@charset "UTF-8";
+
+.intro-lnb{
+    position : absolute;
+    width : 100%;
+    top:0;
+    left:0;
+}
+
+.intro-lnb .help-btn{
+    position: absolute;
+    top:19px;
+    left:20px;
+    width:83px;
+    height:85px;
+    background : url(../images_m/intro/bt_help.png) 0 0 no-repeat;
+}
+
+
+.intro-lnb .close-btn{
+    position: absolute;
+    background : url(../images_m/intro/bt_close.png) 0 0 no-repeat;
+    top:20px;
+    right:14px;
+    width:77px;
+    height:77px;
+}
+
+.version {
+    position:absolute;
+    bottom:23px;
+    left:23px;
+    font-weight:bold;
+    color:#000;
+    letter-spacing:0;
+    font-size:1em;
+    display:none;
+}
+
+.intro-wrap{
+    position:relative;
+    width : 100%;
+    height : 100%;
+}
+
+.intro-bg {
+    background : url( ../images/intro/bg_search.png );
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+.intro-box{
+    width:657px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* 하단 큰 버튼 공통 */
+.intro-large-btn {
+    width:476px;
+    height:72px;
+}
+
+.intro-large-btn:active{
+    background-position : 0 -72px;
+}
+
+.intro-small-btn {
+    width:228px;
+    height:72px;
+}
+
+.intro-small-btn:active{
+    background-position : 0 -72px;
+}
+
+.box-wrap {
+    position:relative;
+}
+
+.box-frame {
+    -webkit-border-radius : 19px;
+    -moz-border-radius : 19px;
+    border-radius : 19px;
+    box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box-tit{
+    height:60px;
+    background:#00baf1;
+    line-height:60px;
+    text-align : center;
+    -webkit-border-top-left-radius : 19px;
+    -webkit-border-top-right-radius : 19px;
+    -moz-border-radius-topleft: 19px;
+    -moz-border-radius-topright: 19px;
+    border-top-left-radius : 19px;
+    border-top-right-radius : 19px;
+}
+
+.box-tit img{
+    vertical-align: middle;
+    width : 75%;
+}
+
+.gradient-tit {
+    background-image: -webkit-linear-gradient(top, #00baf1, #00a9ee);
+    background-image:    -moz-linear-gradient(top, #00baf1, #00a9ee); /* Fx 3.6 부터 Fx 15 까지 처리 */
+    background-image:     -ms-linear-gradient(top, #00baf1, #00a9ee); /* IE 10 Platform Previews, Consumer Preview */
+    background-image:      -o-linear-gradient(top, #00baf1, #00a9ee); /* Opera 11.1 부터 12.0 까지 처리 */ 
+    background-image:         linear-gradient(to bottom, #00baf1, #00a9ee); /* 표준구문, 표준구문은 반드시 마지막에 삽입해야한다. */
+}
+
+.box-cont-wrap{
+    height:194px;
+    background: #FFF;
+    padding-bottom:19px;
+    -webkit-border-bottom-left-radius : 19px;
+    -webkit-border-bottom-right-radius : 19px;
+    -moz-border-radius-bottomleft: 19px;
+    -moz-border-radius-bottomright: 19px;
+    border-bottom-left-radius : 19px;
+    border-bottom-right-radius : 19px;
+}
+
+.box-cont{
+    width:100%;
+    overflow-y: scroll;
+}
+
+
+.blooth-list{
+    height:194px;
+}
+
+
+.blooth-list li{
+    height:53px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.blooth-list li a{
+    display:inline-block;
+    height:100%;
+    width:100%;
+    background: #FFF;
+    text-align: center;
+    line-height:53px;
+    color:#000;
+    font-size:1.5em;
+}
+
+.blooth-list li a:active{
+    background: #2a76da;
+}
+
+
+.info-wrap {
+    margin-top : 27px;
+    text-align : center;
+}
+
+.info-wrap img{
+    width : 75%;
+}
+
+.button-wrap {
+    margin-top : 26px;
+    text-align : center;
+}
+
+.retry-search-btn {
+    background : url(../images_m/intro/bt_retry_search.png) 0px 0px no-repeat;
+}
+
+.cancel-search-btn {
+    background : url(../images_m/intro/bt_cancel_search.png) 0px 0px no-repeat;
+}
+
+.search-list .box-tit img{
+    width : 527px;
+}
+
+
+
+
+/* 연결성공 : success */
+.search-success .box-tit img {
+    width : 460px;
+}
+
+.box-cont-wrap.result-box {
+    text-align: center;
+    height: 221px;
+    padding : 23px 0 23px 0;
+    margin : 0;
+    color : #333;
+}
+
+.conn-state-ok-icon {
+    text-align: center;
+}
+
+.conn-state-ok-icon img{
+    width : 297px;
+}
+
+.conn-state-ok-name {
+    margin-top : 7px;
+    text-align: center;
+    font-weight: bold;
+    /*2.85em*/
+    font-size : 1.8em;
+}
+
+.conn-state-ok-info {
+    margin-top : 3px;
+    text-align: center;
+}
+
+.conn-state-ok-info img{
+    width : 75%;
+}
+
+.conn-ok-btn {
+    background : url(../images_m/intro/bt_conn_ok.png) 0 0 no-repeat;
+}
+
+.conn-rename-btn {
+    margin-top : 27px;
+    width:167px;
+    height:49px;
+    background : url(../images_m/intro/bt_rename.png) 0 0 no-repeat;
+}
+
+.conn-rename-btn:active {
+    background-position : 0 -49px;
+}
+
+
+/* 연결실패 */
+
+.fail .box-tit img {
+    width : 364px;
+}
+
+
+.intro-box.fail .box-cont-wrap{
+    height : 172px;
+    padding : 53px 0 42px 0;    
+}
+
+.intro-box.fail .button-wrap {
+    margin-top : 65px;
+}
+
+.intro-box.fail .conn-state-ok-info img{
+    width : 272px;
+}
+
+.conn-state-ok-icon.intro-fail{
+    text-align: center;
+}
+
+.conn-state-ok-info.intro-fail{
+    margin-top : 43px;
+}
+
+.conn-fail-ok-btn {
+    margin-right : 20px;
+    background : url( ../images_m/intro/bt_conn_retry.png ) 0 0 no-repeat;
+}
+
+.conn-fail-cancel-btn {
+    background : url( ../images_m/intro/bt_conn_cancel_s.png ) 0 0 no-repeat;
+}
+
+/* 접속중 connecting*/
+
+.search-connecting .box-tit img {
+    width : 285px;
+}
+
+.conn-state-ing-icon {
+    margin-top : 30px;
+    width : 297px;
+    height : 78px;
+    display : inline-block;
+    background : url(../images_m/intro/conn_sprite.png);
+}
+
+.conn-state-ing-info{
+    margin-top : 36px;
+}
+
+.conn-state-ing-info img{
+    width : 272px;
+}
+
+.cancel-conn-btn {
+    background : url(../images_m/intro/bt_conn_cancel.png) 0 0 no-repeat;
+}
+
+
+
+/* 팝업 */
+.popup-wrap{
+    position : absolute;
+    left : 50%;
+    top : 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-contents {
+    width : 100%;
+    height : 100%;
+}
+
+/* 이름변경 팝업 .popup-wrap*/
+.intro-popup-rename .popup-wrap{
+    width : 512px;
+}
+
+.intro-popup-rename .box-tit{
+    height : 59px;
+    background : #FFF;
+    border-bottom : solid 2px #00b4f0;
+    font-size: 2.5em;
+    font-weight : bold;
+    color:#000;
+}
+
+.intro-popup-rename .box-cont-wrap{
+    height : 178px;
+    padding : 23px 0;
+    text-align : center;
+}
+
+.rename-input {
+    width : 378px;
+    height : 53px;
+    display : inline-block;
+    background : url( ../images_m/intro/bg_rename_input.png ) 0 2px no-repeat;
+}
+.rename-input span {
+    display: inline-block;
+    width : 220px;
+    height :50px;
+    border : solid 2px #bdbdbd;
+    background : #f1f1f1;
+    margin-left : 154px;
+    padding : 0 10px;
+    
+}
+
+.rename-input span.write {
+    background : #FFF;
+}
+
+.rename-input input {
+    margin-top : 1px;
+    background : none;
+    border : none;
+    width : 220px;
+    height :50px;
+    color : b8b8b8;
+    font-size: 2.5em;
+    font-weight : bold;
+    letter-spacing: -1px;
+}
+
+.rename-input .write input {
+    color : 333333;
+}
+
+
+.rename-info {
+    margin-top : 15px;
+}
+
+.rename-info img{
+    width : 413px;
+}
+
+.rename-ok-btn {
+    width : 167px;
+    height : 49px;
+    background : url(../images_m/intro/bt_rename_ok.png) 0 0 no-repeat;
+    margin-top : 23px;
+}
+
+.rename-ok-btn:active {
+    background-position: 0 -49px;
+}
+
+
+/* 앱종료 팝업 .popup-wrap*/
+.intro-popup-shotdown .popup-wrap{
+    width : 512px;
+}
+
+.intro-popup-shotdown .box-tit{
+    height : 45px;
+}
+
+.intro-popup-shotdown .intro-popup-msg-box {
+    font-size : 2.5em;
+    font-weight : bold;
+    letter-spacing : -1px;
+    color : #000;
+}
+
+.intro-popup-shotdown .box-cont-wrap{
+    height : 192px;
+    padding : 63px 0 0 0;
+    text-align : center;
+}
+
+.intro-popup-shotdown .shotdown_btn_wrap {
+    margin-top : 60px;
+}
+
+.intro-shotdown-cancel-btn{
+    margin-right : 8px;
+    background : url(../images_m/intro/bt_conn_cancel_s.png);
+}
+
+
+.intro-shotdown-ok-btn{
+    background : url(../images_m/intro/bt_conn_ok_s.png);
+}
+
+/* 도움말 */
+
+.intro-popup-help .popup-wrap{
+   width : 1244px;
+   height : 752px;
+   padding : 24px 18px;
+}
+
+.intro-popup-help .box-tit {
+    height : 60px;
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: -1px;
+    color : #FFF;
+}
+
+.intro-popup-help .box-cont-wrap{
+   height : 672px;
+   padding : 0;
+}
+
+.intro-popup-help .box-cont-wrap .box-cont{
+   height : 642px;
+   overflow-y: scroll
+}
+
+.intro-popup-help .box-tit .help-close-btn{
+    position : absolute;
+    width:50px;
+    height:50px;
+    line-height: 50px;
+    right : 10px;
+    top : 1px;
+}
+
+.intro-popup-help .box-tit .help-close-btn img{
+    width:50px;
+    height:50px;
+}
+
+/* HELP :: FAQ List - 기존 모블로 컨텐츠의 board.css 사용. */
+.faqlist {
+    /*border-top:3px solid #16aff0;*/
+    border-bottom:1px solid #e2e2e2;
+    /*margin-top:15px;*/
+}
+.faqlist li {border-top:1px solid #e2e2e2;}
+.faqlist li:first-child {border-top:none;}
+.faqlist li .faq_q.on .faq_tit {
+    background-image:url("../images/icons/ico_bullet_arrow_top_black_bold.gif"); 
+    color:#0598d6;
+}
+
+.faq_q {display:block; padding:12px 20px; cursor:pointer;}
+.faq_q:hover .faq_tit {color:#0598d6;}
+.faq_q .inbox {
+    background:url("../images/icons/ico_faq_question.gif") no-repeat 0 0;
+    padding:0 0 0 43px;
+    min-height:26px;
+}
+.faq_tit {
+    background:url("../images/icons/ico_bullet_arrow_bottom_black_bold.gif") no-repeat right;
+    font-size:1.2em; 
+    color:#333;
+    line-height:19px;
+    padding:3px 20px 0 0;
+}
+.faq_a {
+    padding:12px 20px;
+    background-color:#fdfdfd;
+    border-top:1px solid #e2e2e2;
+    display:block;
+}
+.faq_answer {
+    /* 이미지 없어서 주석처리, 기존 모블로 앱에도 없음.
+    background:url("../images/icons/ico_faq_answer.gif") no-repeat 0 0; */
+    padding-left:43px;
+    font-size:1.2em;
+}
+
+/*메인 및 타이틀 공통*/
+.main-wrap{
+    width : 100%;
+    height : 100%;
+}
+
+.main-contents{
+    position : relative;
+    width : 100%;
+    height : 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.main-foot {
+    position:absolute;
+    left:0;
+    bottom:0;
+    z-index: 5000;
+    width : 100%;
+    height : 0px;
+    overflow : hidden;
+    -webkit-transition : height 0.4s, cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition : height 0.4s, cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+
+/* 타이틀 화면 */
+.title-scene .main-contents{
+    position : relative;
+    width : 100%;
+    height : 100%;
+    background : url(../images/common/bg_title.jpg) no-repeat top center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.title-scene .main-contents .world-wrap{
+    padding : 0;
+    height : 100%;
+}
+
+.title-scene .game-tit {
+    width : 511px;
+    position : absolute;
+    left : 50%;
+    transform: translate(-50%, 0);
+    bottom : 83px;
+}
+
+.title-scene .game-tit img {
+    width : 100%;
+}
+
+.title-scene .loading-bar-wrap {
+    position : absolute;
+    width : 450px;
+    height : 15px;
+    bottom : 57px;
+    left : 50%;
+    padding : 3px;
+    transform: translate(-50%, 0);
+}
+
+.title-scene .loading-bar-wrap .loading-bg {
+    position : absolute;
+    top : 0;
+    left : 0;
+    width : 450px;
+    height : 15px;
+}
+
+.title-scene .loading-bar-wrap .loading-bg img{
+    width : 100%;
+}
+
+.title-scene .loading-bar-wrap .loading-bar {
+    position : relative;
+    width : 444px;
+    height : 9px;
+}
+
+
+
+.title-scene .main-foot {
+    height : 38px;
+    text-align : center;
+}
+
+.title-scene .main-foot img {
+    width : 284px;
+}
+
+
+/* 메인 홈 */
+
+.home-wrap {
+    position: absolute;
+    width : 100%;
+    height : 100%;
+    top:0;
+    left:0;
+}
+
+.home-wrap .main-contents{
+    background : url(../images/main/bg_home.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.home-wrap .main-foot.on{
+    height : 128px;
+}
+
+
+.home-wrap .card {
+    position : absolute;
+}
+
+.home-wrap .card img{
+    width : 100%;
+}
+
+.home-wrap .card#card_01{
+    width : 255px;
+    height : 323px;
+    top : 50%;
+    left : 50%;
+    transform : translate( -50%, -174px );
+}
+
+.home-wrap .card#card_02{
+    width : 204px;
+    height : 228px;
+    top : 50%;
+    left : 50%;
+    transform : translate( 84px, -142px );
+}
+
+.home-wrap .card#card_03{
+    width : 204px;
+    height : 228px;
+    top : 50%;
+    left : 50%;
+    transform : translate( -300px, -142px );
+}
+
+.main-lnb-container {
+    position : absolute;
+    width : 100%;
+    top : -102px;
+    -webkit-transition : top 0.4s, cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition : top 0.4s, cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.main-lnb-container.on {
+    top : 0px;
+}
+
+.main-lnb-box {
+    position : relative;
+    width : 100%;
+    height : 80px;
+    padding : 22px 0 0 0;
+}
+
+.main-lnb-box .gallery-btn {
+    position : absolute;
+    top : 22px;
+    left : 22px; 
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_gallery_open.png) 0 0 no-repeat;
+}
+
+.main-lnb-box .close-btn {
+    position : absolute;
+    top: 22px;
+    right : 18px; 
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_shotdown.png) 0 0 no-repeat;
+}
+
+.main-lnb-box .gallery-btn:active,
+.main-lnb-box .close-btn:active {
+    background-position: 0 -80px;
+}
+
+.main-lnb-box .center-box {
+    height : 80px;
+    text-align: center;
+    line-height: 80px;
+}
+
+.main-lnb-box .center-box img{
+    width : 453px;
+    margin-top : 19px;
+}
+
+.main-foot-container {
+    position : absolute;
+    width : 100%;
+    left : 0;
+    bottom : -128px;
+    -webkit-transition : bottom 0.4s, cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition : bottom 0.4s, cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.main-foot-container.on{
+    bottom : 0px;
+}
+
+.thumb-theme-contents {
+    position : relative;
+    width : 100%;
+    height : 128px;
+}
+
+.thumb-theme-contents .thumb-control {
+    left : 0;
+    width : 100%;
+}
+
+.thumb-theme-contents .thumb-control .thumb-ui-btn {
+    position : absolute;
+    top : 37px;
+    width : 57px;
+    height : 57px;
+}
+
+.thumb-theme-contents .thumb-control .thumb-ui-btn.thumb-prev-btn {
+    left : 22px;
+    background : url(../images_m/main/bt_thumb_theme_prev.png) 0 0 no-repeat;
+}
+
+.thumb-theme-contents .thumb-control .thumb-ui-btn.thumb-next-btn {
+    right : 22px;
+    background : url(../images_m/main/bt_thumb_theme_next.png) 0 0 no-repeat;
+}
+
+
+.thumb-theme-contents .thumb-theme-list-wrap {
+    height : 106px;
+    padding : 11px 0;
+    margin : 0 101px;
+}
+
+.thumb-theme-contents .thumb-theme-list-wrap li{
+    text-align : center;
+}
+
+.thumb-theme-img {
+    width : 167px;
+    height : 109px;
+}
+
+.thumb-theme-img a img{
+    width : 167px;
+}
+
+.thumb-theme-bg {
+    position : absolute;
+    width : 100%;
+    height : 128px;
+    left : 0px;
+    bottom : 0px;
+}
+
+.thumb-theme-bg-left{
+    position : absolute;
+    left:0;
+    bottom:0;
+    width : 240px;
+    height : 128px;
+    background : url(../images_m/main/bg_thumb_theme_left.png) 0 0 no-repeat;
+}
+.thumb-theme-bg-right{
+    position : absolute;
+    right:0;
+    bottom:0;
+    width : 240px;
+    height : 128px;
+    background : url(../images_m/main/bg_thumb_theme_right.png) 0 0 no-repeat;
+}
+.thumb-theme-bg-center{
+    height : 128px;
+    margin : 0 240px;
+    background : url(../images_m/main/bg_thumb_theme_center.png) 0 0 repeat-x;
+    
+}
+
+
+/* 게임화면 컨텐츠영역 */
+.canvas-wrap{
+    position : relative;
+    height : 100%;
+    width : 100%;
+}
+
+.canvas-wrap canvas{
+    display:block;
+    width : 100%;
+    height : 100%;
+}
+
+.foot-btn-box-left{
+    position : absolute;
+    bottom : 0px;
+    left : 18px;
+    height : 0px;
+    width : 80px;
+    overflow : hidden;
+}
+
+.foot-btn-box-right{
+    position : absolute;
+    bottom : 0px;
+    right : 18px;
+    height : 0px;
+    width : 80px;
+    overflow : hidden;
+}
+
+.foot-btn {
+    position : absolute;
+    top : 0px;
+    width : 80px;
+    height : 80px;
+    margin-right : 9px;
+}
+
+.foot-btn.lst {
+    width : 80px;
+    height : 80px;
+    margin : 0;
+}
+
+/* 정부과제용*/
+.foot-btn-box-center{
+    position : absolute;
+    margin-left : 50%;
+    bottom : 0px;
+    left : -200px;
+    height : 0px;
+    width : 400px;
+    overflow : hidden;
+}
+
+/* 정부과제용*/
+.top-btn-box-right{
+    position : absolute;
+    top : -80px;
+    right : 18px;
+    height : 80px;
+    width : 80px;
+    overflow : hidden;
+}
+/* 정부과제용*/
+.eff-group{
+    width : 400px;
+}
+
+.time-btn {
+    background : url(../images_m/main/bt_time.png) 0 0 no-repeat;
+}
+
+.time-btn-night {
+    background : url(../images_m/main/bt_time_night.png) 0 0 no-repeat;
+}
+
+.home-btn {
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_shotdown.png) 0 0 no-repeat;
+    /*
+    background : url(../images_m/main/bt_home.png) 0 0 no-repeat;
+    */
+}
+
+/* 정부과제용*/
+.mirror-btn {
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_mirror.png) 0 0 no-repeat;
+}
+
+/* 정부과제용*/
+.ws-btn {
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_ws.png) 0 0 no-repeat;
+}
+
+/* 정부과제용*/
+.effect-toggle.leaf-btn{
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_eff_leaf.png) 0 0 no-repeat;
+}
+
+/* 정부과제용*/
+.effect-toggle.flower-btn{
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_eff_flower.png) 0 0 no-repeat;
+}
+
+/* 정부과제용*/
+.effect-toggle.snow-btn{
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_eff_snow.png) 0 0 no-repeat;
+}
+
+/* 정부과제용*/
+.effect-toggle.rain-btn{
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_eff_rain.png) 0 0 no-repeat;
+}
+
+/* 정부과제용*/
+.effect-toggle.off{
+    background-position: 0 -80px;
+}
+
+/* 정부과제용*/
+.quake-btn{
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_eff_quake.png) 0 0 no-repeat;
+}
+
+/* 정부과제용*/
+.fireworks-btn{
+    width : 80px;
+    height : 80px;
+    background : url(../images_m/main/bt_eff_fireworks.png) 0 0 no-repeat;
+}
+
+/* 메인 홈/게임화면 팝업 */
+.popup-layer-main {
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    width : 408px;
+    height : 263px;
+    transform: translate(-50%, -50%);
+}
+
+.popup-layer-main.popup-delete .popup-contents {
+    background : url(../images_m/common/pop_delete.png) 0 0 no-repeat;
+}
+
+
+.popup-layer-main.popup-save {
+    background : url(../images_m/common/pop_save.png) 0 0 no-repeat;
+}
+
+.popup-layer-main.popup-shotdown {
+    width : 498px;
+    height : 271px;
+    background : url(../images_m/common/pop_shotdown.png) 0 0 no-repeat;
+}
+
+.popup-layer-main.popup-read-confirm {
+    width : 498px;
+    height : 323px;
+    background : url(../images_m/common/pop_read_board.png) 0 0 no-repeat;
+}
+
+.popup-layer-main.popup-guide {
+    width : 860px;
+    height : 556px;
+    background : url(../images_m/common/pop_guide.png) 0 0 no-repeat;
+}
+
+/* 정부과제 */
+.popup-layer-main.popup-ws-fail {
+    width : 498px;
+    height : 271px;
+    background : url(../images_m/common/pop_ws_fail.png) 0 0 no-repeat;
+}
+
+/* 정부과제 */
+.popup-layer-main.popup-ws-end {
+    background : url(../images_m/common/pop_ws_end.png) 0 0 no-repeat;
+}
+
+/* 정부과제 */
+.popup-layer-main.popup-ws-bg {
+    width : 498px;
+    height : 271px;
+    background : url(../images_m/common/pop_ws_bg.png) 0 0 no-repeat;
+}
+
+/* 정부과제 */
+.popup-layer-main.popup-ws-bg .popup-txt-conn{
+    position : absolute;
+    top : 121px;
+    width : 100%;
+    text-align: center;
+}
+/* 정부과제 */
+.popup-layer-main.popup-ws-bg .popup-txt-conn img{
+    width : 238px;
+}
+
+/* 정부과제 */
+.popup-layer-main.popup-ws-bg .popup-txt-share{
+    position : absolute;
+    top : 121px;
+    width : 100%;
+    text-align: center;
+}
+/* 정부과제 */
+.popup-layer-main.popup-ws-bg .popup-txt-share img{
+    width : 346px;
+}
+
+.popup-btn{
+    position : absolute;
+    bottom : 30px;
+    left : 50%;
+    margin-left : -77px;
+    width : 155px;
+    height : 61px;
+}
+
+.popup-btn:active {
+    background-position: 0 -61px;
+}
+
+.popup-confirm-btn{
+    background : url(../images_m/common/bt_popup_confirm.png) 0 0 no-repeat;
+}
+
+/* 정부과제 */
+.popup-ws-bg .popup-confirm-btn,
+.popup-ws-fail .popup-confirm-btn{
+    left : 50%;
+    margin-left : -163px;
+}
+
+.popup-shotdown .popup-confirm-btn{
+    left : 50%;
+    margin-left : -163px;
+}
+
+.popup-cancel-btn{
+    left : 50%;
+    bottom : 25px;
+    margin-left : 5px;
+    width : 161px;
+    height : 68px;
+    background : url(../images_m/common/bt_popup_cancel.png) 0 0 no-repeat;
+}
+
+.popup-cancel-btn:active{
+    background-position: 0 -68px;
+}
+
+
+.popup-continue-btn {
+    position : absolute;
+    bottom : 30px;
+    left : 50%;
+    margin-left : -163px;
+    width : 155px;
+    height : 61px;
+    background : url(../images_m/common/bt_popup_continue.png) 0 0 no-repeat;
+}
+
+.popup-new-btn {
+    position : absolute;
+    bottom : 30px;
+    left : 50%;
+    margin-left : 8px;
+    width : 155px;
+    height : 61px;
+    background : url(../images_m/common/bt_popup_new.png) 0 0 no-repeat;
+}
+
+
+.popup-layer-main.popup-guide .popup-guide-btn {
+    bottom : 13px;
+}
+
+.popup-close-btn {
+    position : absolute;
+    margin : 0;
+    top : 9px;
+    left : auto;
+    right : 10px;
+    width : 63px;
+    height : 54px;
+    background : url(../images_m/common/bt_guide_close.png) 0 0 no-repeat;
+}
+
+.popup-close-btn:active {
+    background-position: 0 -54px;
+}
+
+.popup-close-btn-small{
+    position : absolute;
+    margin : 0;
+    top : 5px;
+    left : auto;
+    right : 9px;
+    width : 62px;
+    height : 51px;
+    background : url(../images_m/common/bt_pop_close_s.png) 0 0 no-repeat;
+}
+
+.popup-close-btn-small:active{
+    background-position: 0 -51px;
+}
+
+
+

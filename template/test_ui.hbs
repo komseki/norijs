@@ -1,0 +1,36 @@
+<script id="style" type="text/template">
+    <style>
+        .test {
+            background-color: rgba( 0, 0, 0, 0.3 );
+            color: #FFF;
+            position:absolute;
+            top : 0;
+            left:0;
+            overflow-y : scroll;
+            z-index: 99999;
+            padding : 20px;
+            display: block;
+        }
+        
+        .test button{
+            font-size : 1em;
+            background : #FFF;
+            padding : 5px;
+            margin-right : 10px;
+        }
+    </style>
+</script>
+<script id="dom" type="text/template">
+    <div class="test">
+        <button class="test-add" id="add1" data-idx="0">add1</button>
+        <button class="test-add" id="add2" data-idx="1">add2</button>
+        <button class="test-add" id="add3" data-idx="2">add3</button>
+        <button class="test-add" id="add4" data-idx="3">add4</button>
+        <button class="test-roof" id="roof1" data-idx="0">roof1</button>
+        <button class="test-roof" id="roof2" data-idx="1">roof2</button>
+        <button class="test-roof" id="roof3" data-idx="2">roof3</button>
+        <button class="test-roof" id="roof4" data-idx="3">roof4</button>
+        <button id="all">all add</button>
+        <button id="remove">all remove</button>
+    </div>
+</script>

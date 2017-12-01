@@ -1,0 +1,23 @@
+{
+  "name": "castlemaker-task",
+  "version": "1.0.0",
+  "description": "castlemaker 정부과제",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-ftp-deploy": "^0.1.10",
+    "grunt-sftp-deploy": "^0.2.5"
+  }
+}

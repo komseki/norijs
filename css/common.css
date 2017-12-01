@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+
+@font-face {
+    font-family: 'NanumGothic'; font-style: normal; font-weight: 700;
+    src: url(NanumGothic-Bold.eot);
+    src: url(NanumGothic-Bold.eot?#iefix) format('embedded-opentype'), url(NanumGothic-Bold.woff2) format('x-woff2'), url(NanumGothic-Bold.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'NanumGothic'; font-style: normal; font-weight: 400;
+    src: url(NanumGothic.eot);
+    src: url(NanumGothic.eot?#iefix) format('embedded-opentype'), url(NanumGothic.woff2) format('x-woff2'), url(NanumGothic.woff) format('woff'), url(NanumGothic.ttf) format('truetype');
+}
+
+
+* {margin:0; padding:0;}
+
+html {height:100%;}
+body {
+	height:100%;
+	font-size:14px;
+	font-family: 'NanumGothic','AppleSDGothicNeo','맑은고딕','Malgun Gothic', sans-serif,"돋움",Dotum,"굴림",Gulim;
+	color:#666;
+	-webkit-text-size-adjust:none;
+}
+
+img					{border:0; vertical-align:top; font-size:0;}
+form, fieldset		{display:block; border:0;}
+ul,ol,li			{list-style:none;}
+
+legend,caption		{width:0; height:0; font-size:0; line-height:0; overflow:hidden; visibility:hidden;}
+
+table				{border-collapse:collapse; border-spacing:0; width:100%; font-size:1em;}
+
+ul,ol,li,a,table,td,th,p,dl,dd,dt,strong,span,div {
+	font-size:1em; 
+	line-height:1.5; 
+	word-spacing:1px; 
+	letter-spacing:-1px;
+	word-break:break-all;
+}
+
+p, acronym, address, big, small, cite, code, dfn, em, kbd, pre, samp, sub, sup, tt, var {
+	font-weight:normal; font-style:normal;
+}
+
+h1, h2, h3, h4, h5, h6	{font-size:1em; letter-spacing:-1px; font-family:'AppleSDGothicNeo','맑은고딕','Malgun Gothic', sans-serif,"돋움",Dotum,"굴림",Gulim;}
+
+big						{font-size:1.125em;} /* 14px */
+small					{font-size:0.95em;} /* 11px */
+
+sub						{font-size:1.05em;}
+sup						{font-size:1.05em;}
+
+input, select {
+	vertical-align:middle; 
+	font-size:1em;
+	color:#4b413a; 
+	font-family:'AppleSDGothicNeo','맑은고딕','Malgun Gothic', sans-serif,"돋움",Dotum,"굴림",Gulim;
+	border-radius:0;
+}
+input {-webkit-appearance:none;}
+input::-ms-clear {display:none;}
+input[type="text"], input[type="checkbox"], input[type="radio"], select, textarea {-webkit-appearance:none;}
+input[type="password"] {}
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+
+textarea {
+	border:1px solid #ccc; 
+	font-size:12px; 
+	font-family:'AppleSDGothicNeo','맑은고딕','Malgun Gothic', sans-serif,"돋움",Dotum,"굴림",Gulim;
+	resize:none;
+	border-radius:0;
+}
+
+blockquote, q		{quotes:none;}
+ins {}
+del					{text-decoration:line-through;}
+
+hr {display:none;}
+
+iframe {border:0;}
+
+
+/* 기본 링크 스타일 */
+a 					{color:#4b413a;}
+a:link 				{text-decoration:none;}
+a:visited			{text-decoration:none;}
+a:hover, a:focus	{text-decoration:none;}
+a:active			{text-decoration:none;}
+
+
+/* button */
+button {
+	background:transparent; 
+	margin:0; 
+	padding:0; 
+	border:0; 
+	cursor:pointer;
+	font-family:'AppleSDGothicNeo','맑은고딕','Malgun Gothic', sans-serif,"돋움",Dotum,"굴림",Gulim;
+}
+button::-moz-focus-inner {
+    padding:0;
+    border:0;
+}
+
+
+/* clear */
+.clear {clear:both;}
